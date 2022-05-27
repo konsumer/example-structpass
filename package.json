@@ -1,0 +1,17 @@
+{
+  "name": "example-structpass",
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "cross-env NODE_NO_WARNINGS=1 NODE_OPTIONS='--experimental-vm-modules' npx -y jest"
+  },
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "ref-napi": "^3.0.3",
+    "ref-struct-di": "^1.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "gypfile": true
+}
