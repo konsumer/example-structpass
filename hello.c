@@ -17,7 +17,7 @@ static napi_value hello(napi_env env, napi_callback_info info) {
   assert(status == napi_ok);
 
   Vector2* v = (Vector2*) args[0];
-  printf("Vector2 in C: (%f, %f)\n", &v->x, &v->y );
+  printf("Vector2 in C: (%f, %f)\n", v->x, v->y );
 
   return (napi_value) 5;
 }

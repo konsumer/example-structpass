@@ -16,7 +16,7 @@ const Vector2 = StructType({
 
 // GENERATED
 function hello (v) {
-  addon.hello(v.ref())
+  addon.hello(parseInt(v.ref().hexAddress(), 16))
 }
 
 describe('Vector2', () => {
@@ -28,6 +28,6 @@ describe('Vector2', () => {
 
   test('should be able to call into C with it', () => {
     const v = new Vector2({ x: 10, y: 20 })
-    hello(v)
+    console.log(hello(v))
   })
 })
