@@ -19,7 +19,7 @@ static napi_value hello(napi_env env, napi_callback_info info) {
   Vector2* v = (Vector2*) args[0];
   printf("Vector2 in C: (%f, %f)\n", v->x, v->y );
 
-  return (napi_value) 5;
+  return (napi_value) 0;
 }
 
 #define DECLARE_NAPI_METHOD(name, func)                                        \
