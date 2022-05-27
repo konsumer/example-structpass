@@ -9,17 +9,22 @@ typedef struct Vector2 {
 
 static napi_value hello(napi_env env, napi_callback_info info) {
   size_t argc = 1;
-  napi_value args[argc];
-  
-  napi_status status;
+  napi_value argv[argc];
 
-  status = napi_get_cb_info(env, info, &argc, args, NULL, NULL);
-  assert(status == napi_ok);
+  napi_get_cb_info(env, info, &argc, argv, NULL, NULL);
 
-  Vector2* v = (Vector2*) args[0];
-  printf("Vector2 in C: (%f, %f)\n", v->x, v->y );
+  if (argc < 1) {
+    napi_throw_error(env, "EINVAL", "Too few arguments to hello()");
+    return NULL;
+  }
 
-  return (napi_value) 0;
+  int64_t* ptr = 0;
+  napi_get_value_int64(env, argv[0], ptr);
+
+  Vector2* v = (Vector2*) ptr;
+  printf("Vector2 in C: (%f, %f)\n", v->x, v->y);
+
+  return NULL;
 }
 
 #define DECLARE_NAPI_METHOD(name, func)                                        \
